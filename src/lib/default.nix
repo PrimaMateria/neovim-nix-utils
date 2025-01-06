@@ -3,10 +3,11 @@
   debug,
 }: {
   init = {
+    neovimPackage,
     editionsDir,
     editionsSet,
   }: {
     assembleNeovim = {name}:
-      super.assembleNeovim (debug.traceVal {inherit name editionsDir editionsSet;});
+      super.assembleNeovim {inherit name editionsDir editionsSet neovimPackage;};
   };
 }

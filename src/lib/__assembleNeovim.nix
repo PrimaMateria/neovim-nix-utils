@@ -6,11 +6,14 @@
   name,
   editionsDir,
   editionsSet,
+  neovimPackage,
 }: let
-  spec = super.getSpec {inherit name editionsDir editionsSet;};
+  spec = super.getSpec {
+    inherit name editionsDir editionsSet;
+  };
 
   # Configure neovim with the RC and with the plugins list
-  configuredNeovim = pkgs.wrapNeovim pkgs.neovim {
+  configuredNeovim = pkgs.wrapNeovim neovimPackage {
     configure = {
       customRC = spec.config;
       packages.all.start = spec.plugins;

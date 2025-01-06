@@ -4,6 +4,8 @@ with builtins;
     hierarchy,
     editionsDir,
   }:
-    concatStringsSep "\n" (map super.edition.getConfig {
-      inherit hierarchy editionsDir;
-    })
+    concatStringsSep "\n" (map (edition:
+      super.edition.getConfig {
+        inherit edition editionsDir;
+      })
+    hierarchy)
