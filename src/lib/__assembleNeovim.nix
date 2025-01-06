@@ -4,11 +4,10 @@
   super,
 }: {
   name,
-  basedOn,
   editionsDir,
   editionsSet,
 }: let
-  spec = super.getSpec {inherit name basedOn editionsDir editionsSet;};
+  spec = super.getSpec {inherit name editionsDir editionsSet;};
 
   # Configure neovim with the RC and with the plugins list
   configuredNeovim = pkgs.wrapNeovim pkgs.neovim {

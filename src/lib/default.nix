@@ -1,7 +1,12 @@
-{super}: {
-  editionsDir,
-  editionsSet,
+{
+  super,
+  debug,
 }: {
-  assembleNeovim = {name}:
-    super.assembleNeovim {inherit name editionsDir editionsSet;};
+  init = {
+    editionsDir,
+    editionsSet,
+  }: {
+    assembleNeovim = {name}:
+      super.assembleNeovim (debug.traceVal {inherit name editionsDir editionsSet;});
+  };
 }
