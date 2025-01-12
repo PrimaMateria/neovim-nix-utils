@@ -5,6 +5,8 @@ with builtins; let
     then edition.dependencies
     else [])
   hierarchy;
+
+  # https://ertt.ca/blog/2022/01-12-nix-symlinkJoin-nodePackages/
   dependenciesEnd = concatMap (edition:
     if edition ? dependenciesEnd
     then edition.dependenciesEnd
